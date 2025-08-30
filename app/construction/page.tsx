@@ -1,5 +1,5 @@
 import CalculatorCard from '@/components/CalculatorCard';
-import { Hammer, Home, Ruler, Calculator, Truck, Wrench } from 'lucide-react';
+import { Hammer, Home, Ruler, Calculator, Truck, Triangle } from 'lucide-react';
 
 const constructionCalculators = [
   {
