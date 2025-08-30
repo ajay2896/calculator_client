@@ -2,6 +2,7 @@ import SearchBar from '@/components/SearchBar';
 import CategorySection from '@/components/CategorySection';
 import { Button } from '@/components/ui/button';
 import { Calculator, TrendingUp, Heart, Hammer, ShoppingCart, Smartphone, Smile } from 'lucide-react';
+import { Triangle } from "lucide-react";
 
 const categories = [
   {
