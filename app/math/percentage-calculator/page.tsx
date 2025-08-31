@@ -8,12 +8,18 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+type Results = {
+  percentageOf?: string;
+  whatPercent?: string;
+  percentageChange?: string;
+};
+
 export default function PercentageCalculatorPage() {
   const [value, setValue] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [originalValue, setOriginalValue] = useState(0);
   const [newValue, setNewValue] = useState(0);
-  const [results, setResults] = useState<any>({});
+  const [results, setResults] = useState<Results>({});
 
   const calculatePercentageOf = () => {
     const result = (percentage / 100) * value;
@@ -68,6 +74,7 @@ export default function PercentageCalculatorPage() {
                     <TabsTrigger value="percentage-change">% Change</TabsTrigger>
                   </TabsList>
                   
+                  {/* % of Number */}
                   <TabsContent value="percentage-of" className="space-y-4">
                     <p className="text-gray-600">What is X% of Y?</p>
                     <div className="grid grid-cols-2 gap-4">
@@ -100,6 +107,7 @@ export default function PercentageCalculatorPage() {
                     )}
                   </TabsContent>
                   
+                  {/* What % */}
                   <TabsContent value="what-percent" className="space-y-4">
                     <p className="text-gray-600">X is what percent of Y?</p>
                     <div className="grid grid-cols-2 gap-4">
@@ -132,6 +140,7 @@ export default function PercentageCalculatorPage() {
                     )}
                   </TabsContent>
                   
+                  {/* % Change */}
                   <TabsContent value="percentage-change" className="space-y-4">
                     <p className="text-gray-600">Percentage increase/decrease from X to Y</p>
                     <div className="grid grid-cols-2 gap-4">
