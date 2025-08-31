@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { DivideIcon as LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { LucideIcon } from 'lucide-react'; // ✅ Import type instead of component
 
 interface CalculatorCardProps {
   title: string;
   description: string;
   category: string;
   slug: string;
-  icon: LucideIcon;
+  icon: LucideIcon; // ✅ Correct type usage
 }
 
 const CalculatorCard = ({ title, description, category, slug, icon: Icon }: CalculatorCardProps) => {
