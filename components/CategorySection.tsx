@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import { DivideIcon as LucideIcon } from 'lucide-react';
+import Link from "next/link";
+import type { LucideIcon } from "lucide-react"; // ✅ import type, not component
 
 interface Category {
   id: string;
   name: string;
-  icon: LucideIcon;
+  icon: LucideIcon; // ✅ now correct
   description: string;
   color: string;
   count: number;
@@ -20,7 +20,9 @@ const CategorySection = ({ category }: CategorySectionProps) => {
   return (
     <Link href={`/${category.id}`} className="group">
       <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 group-hover:border-blue-200">
-        <div className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+        <div
+          className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+        >
           <IconComponent className="w-6 h-6 text-white" />
         </div>
         <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
