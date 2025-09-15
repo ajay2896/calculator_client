@@ -181,7 +181,7 @@ export default function PersonalLoanCalculatorPage() {
             "@type": ["WebApplication", "SoftwareApplication", "FinancialProduct"],
             "name": "Personal Loan EMI Calculator",
             "description": "Calculate personal loan EMI, total interest, and eligibility instantly. Free online calculator with detailed amortization schedule.",
-            "url": "https://freecalc.com/finance/loan-calculators/personal-loan-calculator",
+            "url": "https://mreasycalcuators.com/finance/loan-calculators/personal-loan-calculator",
             "applicationCategory": "FinanceApplication",
             "operatingSystem": "Web Browser",
             "offers": {
@@ -191,8 +191,8 @@ export default function PersonalLoanCalculatorPage() {
             },
             "provider": {
               "@type": "Organization",
-              "name": "FreeCalc",
-              "url": "https://freecalc.com"
+              "name": "mreasycalcuators",
+              "url": "https://mreasycalcuators.com"
             },
             "featureList": [
               "EMI Calculation",
@@ -201,7 +201,7 @@ export default function PersonalLoanCalculatorPage() {
               "Amortization Schedule",
               "Downloadable Reports"
             ],
-            "screenshot": "https://freecalc.com/images/personal-loan-calculator-screenshot.jpg"
+            "screenshot": "https://mreasycalcuators.com/images/personal-loan-calculator-screenshot.jpg"
           })
         }}
       />
@@ -727,7 +727,7 @@ export default function PersonalLoanCalculatorPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Calculator className="h-8 w-8 text-purple-400" />
-                <span className="text-xl font-semibold">FreeCalc</span>
+                <span className="text-xl font-semibold">mreasycalcuators</span>
               </div>
               <p className="text-gray-400 text-sm">
                 India's most trusted financial calculator platform with 50+ free tools.
@@ -762,7 +762,7 @@ export default function PersonalLoanCalculatorPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 FreeCalc. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; 2025 mreasycalcuators. All rights reserved. | Privacy Policy | Terms of Service</p>
           </div>
         </div>
       </footer>

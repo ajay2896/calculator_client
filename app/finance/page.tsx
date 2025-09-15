@@ -77,13 +77,13 @@ export default function FinancePage() {
       </section>
 
       {/* Ad Space */}
-      <section className="py-8">
+      {/* <section className="py-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-gray-200 rounded-lg p-8 text-center">
             <p className="text-gray-500">Advertisement Space - Google AdSense</p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Subcategories Grid */}
       <section className="py-12 px-4">
@@ -141,13 +141,13 @@ export default function FinancePage() {
       </section>
 
       {/* Bottom Ad Space */}
-      <section className="py-8">
+      {/* <section className="py-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-gray-200 rounded-lg p-8 text-center">
             <p className="text-gray-500">Advertisement Space - Google AdSense</p>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

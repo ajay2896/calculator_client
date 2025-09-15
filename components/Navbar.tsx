@@ -27,7 +27,10 @@ const Navbar = () => {
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                 <Calculator className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">FreeCalc</span>
+              {/* ✅ Updated Branding */}
+              <span className="text-xl font-bold text-gray-900">
+                MrEasyCalculators
+              </span>
             </Link>
           </div>
 

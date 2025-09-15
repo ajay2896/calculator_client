@@ -2,7 +2,6 @@ import SearchBar from '@/components/SearchBar';
 import CategorySection from '@/components/CategorySection';
 import { Button } from '@/components/ui/button';
 import { Calculator, TrendingUp, Heart, Hammer, ShoppingCart, Smartphone, Smile } from 'lucide-react';
-import { Triangle } from "lucide-react";
 
 const categories = [
   {
@@ -101,11 +100,12 @@ export default function Home() {
       <section className="pt-20 pb-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            All the calculators
-            <span className="block text-blue-600">you need — free & fast.</span>
+            Free Online Calculators for{" "}
+            <span className="block text-blue-600">Finance, Math, Health & More</span>
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Calculate loans, investments, taxes, health metrics, and more in seconds with our comprehensive collection of free calculator tools.
+            Calculate loans, investments, taxes, health metrics, and more in seconds with our
+            comprehensive collection of free calculator tools.
           </p>
           
           <SearchBar />
@@ -154,8 +154,11 @@ export default function Home() {
                   {calculator.description}
                 </p>
                 <Button asChild className="w-full">
-                  <a href={`/${calculator.category}/${calculator.slug}`}>
-                    Open Calculator →
+                  <a 
+                    href={`/${calculator.category}/${calculator.slug}`} 
+                    aria-label={`Open ${calculator.title}`}
+                  >
+                    Open {calculator.title} →
                   </a>
                 </Button>
               </div>

@@ -12,24 +12,24 @@ interface AdSenseProps {
 
 declare global {
   interface Window {
-    adsbygoogle: any[];
+    adsbygoogle?: any[];
   }
 }
 
-const AdSense = ({ 
-  adSlot, 
-  adFormat = 'auto', 
+const AdSense = ({
+  adSlot,
+  adFormat = 'auto',
   fullWidthResponsive = true,
   style = { display: 'block' },
-  className = ''
+  className = '',
 }: AdSenseProps) => {
   useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
+    if (typeof window !== 'undefined' && window.adsbygoogle) {
+      try {
         window.adsbygoogle.push({});
+      } catch (error) {
+        console.error('AdSense push error:', error);
       }
-    } catch (error) {
-      console.error('AdSense error:', error);
     }
   }, []);
 
@@ -41,7 +41,7 @@ const AdSense = ({
         data-ad-client="ca-pub-XXXXXXXXXX"
         data-ad-slot={adSlot}
         data-ad-format={adFormat}
-        data-full-width-responsive={fullWidthResponsive}
+        data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
       />
     </div>
   );

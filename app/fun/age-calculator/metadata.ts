@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Age Calculator - Calculate Your Exact Age | FreeCalc',
+  title: 'Age Calculator - Calculate Your Exact Age | mreasycalcuators',
   description: 'Free age calculator to calculate your exact age in years, months, days, hours, and minutes. Find out how many days until your next birthday.',
   keywords: 'age calculator, calculate age, birthday calculator, days calculator, age in days',
   openGraph: {

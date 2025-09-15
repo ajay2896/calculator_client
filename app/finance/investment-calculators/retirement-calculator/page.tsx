@@ -102,7 +102,7 @@ export default function RetirementCalculator() {
     });
   };
 
-  const formatCurrency = (amount) => {
+  const formatCurrency = (amount:any) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -111,7 +111,7 @@ export default function RetirementCalculator() {
     }).format(amount);
   };
 
-  const formatLakhs = (amount) => {
+  const formatLakhs = (amount:any) => {
     if (amount >= 10000000) {
       return `${(amount / 10000000).toFixed(1)} Cr`;
     } else if (amount >= 100000) {

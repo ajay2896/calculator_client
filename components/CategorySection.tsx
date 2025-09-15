@@ -1,10 +1,10 @@
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react"; // ✅ import type, not component
+import type { LucideIcon } from "lucide-react";
 
 interface Category {
   id: string;
   name: string;
-  icon: LucideIcon; // ✅ now correct
+  icon: LucideIcon;
   description: string;
   color: string;
   count: number;
@@ -17,9 +17,12 @@ interface CategorySectionProps {
 const CategorySection = ({ category }: CategorySectionProps) => {
   const IconComponent = category.icon;
 
+  // ✅ Slugify for safe URLs
+  const categorySlug = category.id.toLowerCase().replace(/\s+/g, "-");
+
   return (
-    <Link href={`/${category.id}`} className="group">
-      <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 group-hover:border-blue-200">
+    <Link href={`/${categorySlug}`} className="group block">
+      <div className="bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 border border-gray-100 group-hover:border-blue-200">
         <div
           className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
         >

@@ -1,19 +1,35 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { BarChart3, Calculator, TrendingUp, DollarSign, Calendar, Percent, Info, PieChart, ArrowUpRight, ArrowDownRight, ToggleLeft, ToggleRight } from 'lucide-react';
+import { BarChart3, Calculator, DollarSign, Calendar, Percent, Info, PieChart, ArrowUpRight, ToggleLeft, ToggleRight } from 'lucide-react';
+
+// Define a type for yearly breakdown
+type YearlyBreakdown = {
+  year: number;
+  totalInvested: number;
+  currentValue: number;
+  yearlyGains: number;
+};
+
+// Define a type for results
+type Results = {
+  totalInvestment: number;
+  maturityAmount: number;
+  totalReturns: number;
+  yearlyBreakdown: YearlyBreakdown[];
+};
 
 export default function MutualFundCalculator() {
-  const [investmentType, setInvestmentType] = useState('SIP'); // SIP or Lump Sum
+  const [investmentType, setInvestmentType] = useState<'SIP' | 'Lump Sum'>('SIP');
   const [monthlyAmount, setMonthlyAmount] = useState(5000);
   const [lumpSumAmount, setLumpSumAmount] = useState(100000);
   const [investmentPeriod, setInvestmentPeriod] = useState(10);
   const [expectedReturn, setExpectedReturn] = useState(12);
   const [stepUpPercent, setStepUpPercent] = useState(10);
   const [enableStepUp, setEnableStepUp] = useState(false);
-  const [fundType, setFundType] = useState('equity'); // equity, debt, hybrid
+  const [fundType, setFundType] = useState<'equity' | 'debt' | 'hybrid'>('equity');
 
-  const [results, setResults] = useState({
+  const [results, setResults] = useState<Results>({
     totalInvestment: 0,
     maturityAmount: 0,
     totalReturns: 0,
@@ -37,23 +53,19 @@ export default function MutualFundCalculator() {
     const totalMonths = investmentPeriod * 12;
     let totalInvestment = 0;
     let maturityAmount = 0;
-    let yearlyBreakdown = [];
+    let yearlyBreakdown: YearlyBreakdown[] = [];
     let currentMonthlyAmount = monthlyAmount;
-    
+
     for (let month = 1; month <= totalMonths; month++) {
-      // Step-up logic
       if (enableStepUp && month > 1 && month % 12 === 1) {
         currentMonthlyAmount = currentMonthlyAmount * (1 + stepUpPercent / 100);
       }
-      
+
       totalInvestment += currentMonthlyAmount;
-      
-      // Calculate future value of this investment
       const monthsRemaining = totalMonths - month + 1;
       const futureValue = currentMonthlyAmount * Math.pow(1 + monthlyRate, monthsRemaining);
       maturityAmount += futureValue;
-      
-      // Store yearly data
+
       if (month % 12 === 0) {
         const year = month / 12;
         yearlyBreakdown.push({
@@ -64,9 +76,9 @@ export default function MutualFundCalculator() {
         });
       }
     }
-    
+
     const totalReturns = maturityAmount - totalInvestment;
-    
+
     setResults({
       totalInvestment,
       maturityAmount,
@@ -78,8 +90,8 @@ export default function MutualFundCalculator() {
   const calculateLumpSumReturns = () => {
     const maturityAmount = lumpSumAmount * Math.pow(1 + expectedReturn / 100, investmentPeriod);
     const totalReturns = maturityAmount - lumpSumAmount;
-    
-    let yearlyBreakdown = [];
+
+    let yearlyBreakdown: YearlyBreakdown[] = [];
     for (let year = 1; year <= investmentPeriod; year++) {
       const currentValue = lumpSumAmount * Math.pow(1 + expectedReturn / 100, year);
       yearlyBreakdown.push({
@@ -89,7 +101,7 @@ export default function MutualFundCalculator() {
         yearlyGains: currentValue - lumpSumAmount
       });
     }
-    
+
     setResults({
       totalInvestment: lumpSumAmount,
       maturityAmount,
@@ -98,7 +110,7 @@ export default function MutualFundCalculator() {
     });
   };
 
-  const formatCurrency = (amount) => {
+  const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -107,7 +119,7 @@ export default function MutualFundCalculator() {
     }).format(amount);
   };
 
-  const getFundTypeInfo = (type) => {
+  const getFundTypeInfo = (type: 'equity' | 'debt' | 'hybrid') => {
     const info = {
       equity: { name: 'Equity Fund', risk: 'High', expectedReturn: '10-15%', color: 'text-red-600' },
       debt: { name: 'Debt Fund', risk: 'Low', expectedReturn: '6-9%', color: 'text-green-600' },
@@ -149,29 +161,27 @@ export default function MutualFundCalculator() {
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => setInvestmentType('SIP')}
-                    className={`flex items-center px-6 py-3 rounded-lg border-2 transition-all ${
-                      investmentType === 'SIP' 
-                        ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                    className={`flex items-center px-6 py-3 rounded-lg border-2 transition-all ${investmentType === 'SIP'
+                        ? 'border-blue-500 bg-blue-50 text-blue-700'
                         : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
-                    }`}
+                      }`}
                   >
                     {investmentType === 'SIP' ? <ToggleRight className="h-5 w-5 mr-2" /> : <ToggleLeft className="h-5 w-5 mr-2" />}
                     SIP (Systematic Investment Plan)
                   </button>
                   <button
                     onClick={() => setInvestmentType('Lump Sum')}
-                    className={`flex items-center px-6 py-3 rounded-lg border-2 transition-all ${
-                      investmentType === 'Lump Sum' 
-                        ? 'border-blue-500 bg-blue-50 text-blue-700' 
+                    className={`flex items-center px-6 py-3 rounded-lg border-2 transition-all ${investmentType === 'Lump Sum'
+                        ? 'border-blue-500 bg-blue-50 text-blue-700'
                         : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
-                    }`}
+                      }`}
                   >
                     {investmentType === 'Lump Sum' ? <ToggleRight className="h-5 w-5 mr-2" /> : <ToggleLeft className="h-5 w-5 mr-2" />}
                     Lump Sum
                   </button>
                 </div>
                 <p className="text-sm text-gray-500 mt-2">
-                  {investmentType === 'SIP' 
+                  {investmentType === 'SIP'
                     ? 'Regular monthly investments with rupee cost averaging benefits'
                     : 'One-time investment with compound growth over time'
                   }
@@ -184,17 +194,16 @@ export default function MutualFundCalculator() {
                   Fund Type
                 </label>
                 <div className="grid grid-cols-3 gap-3">
-                  {['equity', 'debt', 'hybrid'].map(type => {
+                  {(['equity', 'debt', 'hybrid'] as const).map(type => {
                     const info = getFundTypeInfo(type);
                     return (
                       <button
                         key={type}
                         onClick={() => setFundType(type)}
-                        className={`p-4 rounded-lg border-2 transition-all ${
-                          fundType === type 
-                            ? 'border-blue-500 bg-blue-50' 
+                        className={`p-4 rounded-lg border-2 transition-all ${fundType === type
+                            ? 'border-blue-500 bg-blue-50'
                             : 'border-gray-200 bg-white hover:border-gray-300'
-                        }`}
+                          }`}
                       >
                         <div className="text-center">
                           <p className={`font-semibold ${fundType === type ? 'text-blue-700' : 'text-gray-700'}`}>
@@ -207,6 +216,7 @@ export default function MutualFundCalculator() {
                     );
                   })}
                 </div>
+
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -233,11 +243,10 @@ export default function MutualFundCalculator() {
                         <button
                           key={amount}
                           onClick={() => setMonthlyAmount(amount)}
-                          className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
-                            monthlyAmount === amount 
-                              ? 'bg-blue-600 text-white' 
+                          className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${monthlyAmount === amount
+                              ? 'bg-blue-600 text-white'
                               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                          }`}
+                            }`}
                         >
                           ${amount}
                         </button>
@@ -266,13 +275,12 @@ export default function MutualFundCalculator() {
                         <button
                           key={amount}
                           onClick={() => setLumpSumAmount(amount)}
-                          className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
-                            lumpSumAmount === amount 
-                              ? 'bg-blue-600 text-white' 
+                          className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${lumpSumAmount === amount
+                              ? 'bg-blue-600 text-white'
                               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                          }`}
+                            }`}
                         >
-                          ${amount/1000}K
+                          ${amount / 1000}K
                         </button>
                       ))}
                     </div>
@@ -349,18 +357,16 @@ export default function MutualFundCalculator() {
                     </label>
                     <button
                       onClick={() => setEnableStepUp(!enableStepUp)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        enableStepUp ? 'bg-blue-600' : 'bg-gray-200'
-                      }`}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${enableStepUp ? 'bg-blue-600' : 'bg-gray-200'
+                        }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                          enableStepUp ? 'translate-x-6' : 'translate-x-1'
-                        }`}
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${enableStepUp ? 'translate-x-6' : 'translate-x-1'
+                          }`}
                       />
                     </button>
                   </div>
-                  
+
                   {enableStepUp && (
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -585,7 +591,7 @@ export default function MutualFundCalculator() {
                 <div className="text-sm text-blue-800">
                   <p className="font-medium mb-1">Investment Tip:</p>
                   <p>
-                    Mutual funds are subject to market risks. Past performance doesn't guarantee future results. 
+                    Mutual funds are subject to market risks. Past performance doesn't guarantee future results.
                     Always diversify your portfolio and invest according to your risk tolerance and financial goals.
                   </p>
                 </div>

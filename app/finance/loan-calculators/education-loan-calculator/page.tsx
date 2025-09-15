@@ -190,7 +190,7 @@ export default function EducationLoanCalculatorPage() {
             "@type": ["WebApplication", "SoftwareApplication", "EducationalOrganization"],
             "name": "Education Loan EMI Calculator",
             "description": "Calculate education loan EMI for higher studies with moratorium period support. Free calculator for study abroad and India courses.",
-            "url": "https://freecalc.com/finance/loan-calculators/education-loan-calculator",
+            "url": "https://mreasycalcuators.com/finance/loan-calculators/education-loan-calculator",
             "applicationCategory": "EducationApplication",
             "operatingSystem": "Web Browser",
             "offers": {
@@ -200,8 +200,8 @@ export default function EducationLoanCalculatorPage() {
             },
             "provider": {
               "@type": "Organization",
-              "name": "FreeCalc",
-              "url": "https://freecalc.com"
+              "name": "mreasycalcuators",
+              "url": "https://mreasycalcuators.com"
             },
             "featureList": [
               "Education Loan EMI Calculation",
@@ -821,7 +821,7 @@ export default function EducationLoanCalculatorPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Calculator className="h-8 w-8 text-emerald-400" />
-                <span className="text-xl font-semibold">FreeCalc</span>
+                <span className="text-xl font-semibold">mreasycalcuators</span>
               </div>
               <p className="text-gray-400 text-sm">
                 India's most trusted education loan calculator with study abroad support.
@@ -856,7 +856,7 @@ export default function EducationLoanCalculatorPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 FreeCalc Education Finance. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; 2025 mreasycalcuators Education Finance. All rights reserved. | Privacy Policy | Terms of Service</p>
           </div>
         </div>
       </footer>

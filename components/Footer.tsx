@@ -47,11 +47,12 @@ const Footer = () => {
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                 <Calculator className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold">FreeCalc</span>
+              {/* ✅ Updated Branding */}
+              <span className="text-xl font-bold">MrEasyCalculators</span>
             </Link>
             <p className="text-gray-400 text-sm mb-4">
-              Your go-to destination for free, fast, and accurate calculator tools. 
-              From finance to health, we've got you covered.
+              Free, fast and accurate calculators for finance, math, health,
+              construction, and more. Simplifying your everyday calculations.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -90,10 +91,10 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2025 FreeCalc. All rights reserved.
+            © 2025 MrEasyCalculators. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm mt-4 md:mt-0">
-            Made with ❤️ for better calculations
+            Made with ❤️ to make calculations easier
           </p>
         </div>
       </div>

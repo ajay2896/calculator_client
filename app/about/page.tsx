@@ -15,7 +15,7 @@ export default function AboutPage() {
       <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            About FreeCalc
+            About mreasycalcuators
           </h1>
           <p className="text-xl opacity-90">
             Your trusted source for free, accurate, and easy-to-use calculator tools
@@ -45,7 +45,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="prose max-w-none">
               <p className="text-gray-700 leading-relaxed">
-                At FreeCalc, we believe that everyone should have access to powerful, accurate calculation tools 
+                At mreasycalcuators, we believe that everyone should have access to powerful, accurate calculation tools 
                 without any cost barriers. Our mission is to provide comprehensive, user-friendly calculators 
                 that help people make informed decisions in their personal, professional, and academic lives.
               </p>
@@ -88,7 +88,7 @@ export default function AboutPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Why Choose FreeCalc?</CardTitle>
+              <CardTitle>Why Choose mreasycalcuators?</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3 text-gray-700">
